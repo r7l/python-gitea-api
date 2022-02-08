@@ -24,7 +24,7 @@ Method | HTTP request | Description
 [**user_current_list_following**](UserApi.md#user_current_list_following) | **GET** /user/following | List the users that the authenticated user is following
 [**user_current_list_gpg_keys**](UserApi.md#user_current_list_gpg_keys) | **GET** /user/gpg_keys | List the authenticated user&#x27;s GPG keys
 [**user_current_list_keys**](UserApi.md#user_current_list_keys) | **GET** /user/keys | List the authenticated user&#x27;s public keys
-[**user_current_list_repos**](UserApi.md#user_current_list_repos) | **GET** /user/repos | List the repos that the authenticated user owns or has access to
+[**user_current_list_repos**](UserApi.md#user_current_list_repos) | **GET** /user/repos | List the repos that the authenticated user owns
 [**user_current_list_starred**](UserApi.md#user_current_list_starred) | **GET** /user/starred | The repos that the authenticated user has starred
 [**user_current_list_subscriptions**](UserApi.md#user_current_list_subscriptions) | **GET** /user/subscriptions | List repositories watched by the authenticated user
 [**user_current_post_gpg_key**](UserApi.md#user_current_post_gpg_key) | **POST** /user/gpg_keys | Create a GPG key
@@ -1661,7 +1661,7 @@ Name | Type | Description  | Notes
 # **user_current_list_repos**
 > list[Repository] user_current_list_repos(page=page, limit=limit)
 
-List the repos that the authenticated user owns or has access to
+List the repos that the authenticated user owns
 
 ### Example
 ```python
@@ -1711,7 +1711,7 @@ page = 56 # int | page number of results to return (1-based) (optional)
 limit = 56 # int | page size of results (optional)
 
 try:
-    # List the repos that the authenticated user owns or has access to
+    # List the repos that the authenticated user owns
     api_response = api_instance.user_current_list_repos(page=page, limit=limit)
     pprint(api_response)
 except ApiException as e:

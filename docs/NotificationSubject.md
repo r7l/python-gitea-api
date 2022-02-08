@@ -3,6 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**html_url** | **str** |  | [optional] 
+**latest_comment_html_url** | **str** |  | [optional] 
 **latest_comment_url** | **str** |  | [optional] 
 **state** | [**StateType**](StateType.md) |  | [optional] 
 **title** | **str** |  | [optional] 

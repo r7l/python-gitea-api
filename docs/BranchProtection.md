@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **require_signed_commits** | **bool** |  | [optional] 
 **required_approvals** | **int** |  | [optional] 
 **status_check_contexts** | **list[str]** |  | [optional] 
+**unprotected_file_patterns** | **str** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

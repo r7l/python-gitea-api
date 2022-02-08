@@ -31,6 +31,7 @@ Method | HTTP request | Description
 [**issue_get_comment**](IssueApi.md#issue_get_comment) | **GET** /repos/{owner}/{repo}/issues/comments/{id} | Get a comment
 [**issue_get_comment_reactions**](IssueApi.md#issue_get_comment_reactions) | **GET** /repos/{owner}/{repo}/issues/comments/{id}/reactions | Get a list of reactions from a comment of an issue
 [**issue_get_comments**](IssueApi.md#issue_get_comments) | **GET** /repos/{owner}/{repo}/issues/{index}/comments | List all comments on an issue
+[**issue_get_comments_and_timeline**](IssueApi.md#issue_get_comments_and_timeline) | **GET** /repos/{owner}/{repo}/issues/{index}/timeline | List all comments and events on an issue
 [**issue_get_issue**](IssueApi.md#issue_get_issue) | **GET** /repos/{owner}/{repo}/issues/{index} | Get an issue
 [**issue_get_issue_reactions**](IssueApi.md#issue_get_issue_reactions) | **GET** /repos/{owner}/{repo}/issues/{index}/reactions | Get a list reactions of an issue
 [**issue_get_label**](IssueApi.md#issue_get_label) | **GET** /repos/{owner}/{repo}/labels/{id} | Get a single label
@@ -2344,6 +2345,98 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **issue_get_comments_and_timeline**
+> list[TimelineComment] issue_get_comments_and_timeline(owner, repo, index, since=since, page=page, limit=limit, before=before)
+
+List all comments and events on an issue
+
+### Example
+```python
+from __future__ import print_function
+import time
+import gitea_api
+from gitea_api.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = gitea_api.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = gitea_api.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
+configuration = gitea_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = gitea_api.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = gitea_api.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = gitea_api.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = gitea_api.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = gitea_api.IssueApi(gitea_api.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+index = 789 # int | index of the issue
+since = '2013-10-20T19:20:30+01:00' # datetime | if provided, only comments updated since the specified time are returned. (optional)
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results (optional)
+before = '2013-10-20T19:20:30+01:00' # datetime | if provided, only comments updated before the provided time are returned. (optional)
+
+try:
+    # List all comments and events on an issue
+    api_response = api_instance.issue_get_comments_and_timeline(owner, repo, index, since=since, page=page, limit=limit, before=before)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling IssueApi->issue_get_comments_and_timeline: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo | 
+ **repo** | **str**| name of the repo | 
+ **index** | **int**| index of the issue | 
+ **since** | **datetime**| if provided, only comments updated since the specified time are returned. | [optional] 
+ **page** | **int**| page number of results to return (1-based) | [optional] 
+ **limit** | **int**| page size of results | [optional] 
+ **before** | **datetime**| if provided, only comments updated before the provided time are returned. | [optional] 
+
+### Return type
+
+[**list[TimelineComment]**](TimelineComment.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **issue_get_issue**
 > Issue issue_get_issue(owner, repo, index)
 
@@ -3004,11 +3097,11 @@ labels = 'labels_example' # str | comma separated list of labels. Fetch only iss
 q = 'q_example' # str | search string (optional)
 type = 'type_example' # str | filter by type (issues / pulls) if set (optional)
 milestones = 'milestones_example' # str | comma separated list of milestone names or ids. It uses names and fall back to ids. Fetch only issues that have any of this milestones. Non existent milestones are discarded (optional)
-since = '2013-10-20T19:20:30+01:00' # datetime | Only show notifications updated after the given time. This is a timestamp in RFC 3339 format (optional)
-before = '2013-10-20T19:20:30+01:00' # datetime | Only show notifications updated before the given time. This is a timestamp in RFC 3339 format (optional)
-created_by = 'created_by_example' # str | filter (issues / pulls) created to (optional)
-assigned_by = 'assigned_by_example' # str | filter (issues / pulls) assigned to (optional)
-mentioned_by = 'mentioned_by_example' # str | filter (issues / pulls) mentioning to (optional)
+since = '2013-10-20T19:20:30+01:00' # datetime | Only show items updated after the given time. This is a timestamp in RFC 3339 format (optional)
+before = '2013-10-20T19:20:30+01:00' # datetime | Only show items updated before the given time. This is a timestamp in RFC 3339 format (optional)
+created_by = 'created_by_example' # str | Only show items which were created by the the given user (optional)
+assigned_by = 'assigned_by_example' # str | Only show items for which the given user is assigned (optional)
+mentioned_by = 'mentioned_by_example' # str | Only show items in which the given user was mentioned (optional)
 page = 56 # int | page number of results to return (1-based) (optional)
 limit = 56 # int | page size of results (optional)
 
@@ -3031,11 +3124,11 @@ Name | Type | Description  | Notes
  **q** | **str**| search string | [optional] 
  **type** | **str**| filter by type (issues / pulls) if set | [optional] 
  **milestones** | **str**| comma separated list of milestone names or ids. It uses names and fall back to ids. Fetch only issues that have any of this milestones. Non existent milestones are discarded | [optional] 
- **since** | **datetime**| Only show notifications updated after the given time. This is a timestamp in RFC 3339 format | [optional] 
- **before** | **datetime**| Only show notifications updated before the given time. This is a timestamp in RFC 3339 format | [optional] 
- **created_by** | **str**| filter (issues / pulls) created to | [optional] 
- **assigned_by** | **str**| filter (issues / pulls) assigned to | [optional] 
- **mentioned_by** | **str**| filter (issues / pulls) mentioning to | [optional] 
+ **since** | **datetime**| Only show items updated after the given time. This is a timestamp in RFC 3339 format | [optional] 
+ **before** | **datetime**| Only show items updated before the given time. This is a timestamp in RFC 3339 format | [optional] 
+ **created_by** | **str**| Only show items which were created by the the given user | [optional] 
+ **assigned_by** | **str**| Only show items for which the given user is assigned | [optional] 
+ **mentioned_by** | **str**| Only show items in which the given user was mentioned | [optional] 
  **page** | **int**| page number of results to return (1-based) | [optional] 
  **limit** | **int**| page size of results | [optional] 
 
@@ -3567,7 +3660,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **issue_search_issues**
-> list[Issue] issue_search_issues(state=state, labels=labels, milestones=milestones, q=q, priority_repo_id=priority_repo_id, type=type, since=since, before=before, assigned=assigned, created=created, mentioned=mentioned, review_requested=review_requested, page=page, limit=limit)
+> list[Issue] issue_search_issues(state=state, labels=labels, milestones=milestones, q=q, priority_repo_id=priority_repo_id, type=type, since=since, before=before, assigned=assigned, created=created, mentioned=mentioned, review_requested=review_requested, owner=owner, team=team, page=page, limit=limit)
 
 Search for issues across the repositories that the user has access to
 
@@ -3627,12 +3720,14 @@ assigned = true # bool | filter (issues / pulls) assigned to you, default is fal
 created = true # bool | filter (issues / pulls) created by you, default is false (optional)
 mentioned = true # bool | filter (issues / pulls) mentioning you, default is false (optional)
 review_requested = true # bool | filter pulls requesting your review, default is false (optional)
+owner = 'owner_example' # str | filter by owner (optional)
+team = 'team_example' # str | filter by team (requires organization owner parameter to be provided) (optional)
 page = 56 # int | page number of results to return (1-based) (optional)
 limit = 56 # int | page size of results (optional)
 
 try:
     # Search for issues across the repositories that the user has access to
-    api_response = api_instance.issue_search_issues(state=state, labels=labels, milestones=milestones, q=q, priority_repo_id=priority_repo_id, type=type, since=since, before=before, assigned=assigned, created=created, mentioned=mentioned, review_requested=review_requested, page=page, limit=limit)
+    api_response = api_instance.issue_search_issues(state=state, labels=labels, milestones=milestones, q=q, priority_repo_id=priority_repo_id, type=type, since=since, before=before, assigned=assigned, created=created, mentioned=mentioned, review_requested=review_requested, owner=owner, team=team, page=page, limit=limit)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling IssueApi->issue_search_issues: %s\n" % e)
@@ -3654,6 +3749,8 @@ Name | Type | Description  | Notes
  **created** | **bool**| filter (issues / pulls) created by you, default is false | [optional] 
  **mentioned** | **bool**| filter (issues / pulls) mentioning you, default is false | [optional] 
  **review_requested** | **bool**| filter pulls requesting your review, default is false | [optional] 
+ **owner** | **str**| filter by owner | [optional] 
+ **team** | **str**| filter by team (requires organization owner parameter to be provided) | [optional] 
  **page** | **int**| page number of results to return (1-based) | [optional] 
  **limit** | **int**| page size of results | [optional] 
 

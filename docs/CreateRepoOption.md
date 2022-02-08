@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**auto_init** | **bool** | Whether the repository should be auto-intialized? | [optional] 
+**auto_init** | **bool** | Whether the repository should be auto-initialized? | [optional] 
 **default_branch** | **str** | DefaultBranch of the repository (used when initializes and in template) | [optional] 
 **description** | **str** | Description of the repository to create | [optional] 
 **gitignores** | **str** | Gitignores to use | [optional] 
