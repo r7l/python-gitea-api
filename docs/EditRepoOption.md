@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **default_delete_branch_after_merge** | **bool** | set to &#x60;true&#x60; to delete pr branch after merge by default | [optional] 
 **default_merge_style** | **str** | set to a merge style to be used by this repository: \&quot;merge\&quot;, \&quot;rebase\&quot;, \&quot;rebase-merge\&quot;, or \&quot;squash\&quot;. &#x60;has_pull_requests&#x60; must be &#x60;true&#x60;. | [optional] 
 **description** | **str** | a short description of the repository. | [optional] 
+**enable_prune** | **bool** | enable prune - remove obsolete remote-tracking references | [optional] 
 **external_tracker** | [**ExternalTracker**](ExternalTracker.md) |  | [optional] 
 **external_wiki** | [**ExternalWiki**](ExternalWiki.md) |  | [optional] 
 **has_issues** | **bool** | either &#x60;true&#x60; to enable issues for this repository or &#x60;false&#x60; to disable them. | [optional] 
