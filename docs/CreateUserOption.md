@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **login_name** | **str** |  | [optional] 
 **must_change_password** | **bool** |  | [optional] 
 **password** | **str** |  | 
+**restricted** | **bool** |  | [optional] 
 **send_notify** | **bool** |  | [optional] 
 **source_id** | **int** |  | [optional] 
 **username** | **str** |  | 
