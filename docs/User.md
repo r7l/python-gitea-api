@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **last_login** | **datetime** |  | [optional] 
 **location** | **str** | the user&#x27;s location | [optional] 
 **login** | **str** | the user&#x27;s username | [optional] 
+**login_name** | **str** | the user&#x27;s authentication sign-in name. | [optional] [default to 'empty']
 **prohibit_login** | **bool** | Is user login prohibited | [optional] 
 **restricted** | **bool** | Is user restricted | [optional] 
 **starred_repos_count** | **int** |  | [optional] 
